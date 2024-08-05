@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Quiz Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Completed</h1>
+        <p class="score">Your score: {{ score }} out of {{ total }}</p>
+        
+        {% if (score / total) <= 0.25 %}
+            <p class="emoji">&#128532<h2>Better luck next time!</h2></p>
+        
+        {% elif (score / total) <= 0.5 %}
+            <p class="emoji">&#128533<h2>Well Tried Champ!</h2></p>
+
+        {% elif (score / total) <= 0.75 %}
+            <p class="emoji">&#128515<h2>Almost There!</h2></p>
+
+        {% else %}
+            <p class="emoji"> &#129321<h2>Outstanding!</h2></p>
+
+        {% endif %}
+           
+    </div>
+</body>
+</html>

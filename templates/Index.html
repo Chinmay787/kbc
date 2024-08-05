@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Question {{ index + 1 }} of {{ total }}</h1>
+        <form method="POST" action="{{ url_for('question') }}">
+            <div>
+                <h2 class="h2">{{ question['question'] }}</h2>
+                <div class="child">
+                    <input type="radio" id="option1" name="option" value="option1" {% if selected_option=='option1'
+                        %}checked{% endif %}>
+                    <label for="option1">{{ question['option1'] }}</label>
+                </div>
+                <div class="child">
+                    <input type="radio" id="option2" name="option" value="option2" {% if selected_option=='option2'
+                        %}checked{% endif %}>
+                    <label for="option2">{{ question['option2'] }}</label>
+                </div>
+                <div class="child">
+                    <input type="radio" id="option3" name="option" value="option3" {% if selected_option=='option3'
+                        %}checked{% endif %}>
+                    <label for="option3">{{ question['option3'] }}</label>
+                </div>
+                <div class="child">
+                    <input type="radio" id="option4" name="option" value="option4" {% if selected_option=='option4'
+                        %}checked{% endif %}>
+                    <label for="option4">{{ question['option4'] }}</label>
+                </div>
+            </div>
+            <div>
+                {% if index > 0 %}
+                    <button type="submit" name="prev">Prev</button>
+                {% endif %}
+                {% if index < total - 1 %} 
+                    <button type="submit" name="next">Next</button>
+                {% else %}
+                    <button type="submit" name="submit">Submit</button>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
